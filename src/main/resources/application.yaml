@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: springai-bootcamp-demo
+  ai:
+    model:
+      chat: ollama
+      embedding: none
+    ollama:
+      base-url: ${OLLAMA_BASE_URL:http://localhost:11434}
+      init:
+        pull-model-strategy: never
+      chat:
+        options:
+          model: ${OLLAMA_MODEL:gemma3:1b}
+          temperature: 0.2
+          num-ctx: 4096
+          num-predict: 1100
+    retry:
+      max-attempts: 1
+  http:
+    client:
+      connect-timeout: 5s
+      read-timeout: 180s
+  datasource:
+    url: jdbc:sqlite:${SQLITE_DB_PATH:chatbot.db}
+    driver-class-name: org.sqlite.JDBC
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.community.dialect.SQLiteDialect
+    open-in-view: false
+
+ai:
+  system-prompt: ${AI_SYSTEM_PROMPT:You are a helpful, concise Java bootcamp tutor. Answer in English.}
+
+server:
+  address: 127.0.0.1
+  port: ${SERVER_PORT:8080}
