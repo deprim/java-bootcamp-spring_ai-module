@@ -64,13 +64,6 @@ Run the application from the project root:
 Open [http://localhost:8080](http://localhost:8080). Create a chat and send a
 message. The browser sends it to the local model through the Spring application.
 
-On this machine Java 17 is the shell default; use the installed Java 21 JDK:
-
-```sh
-export JAVA_HOME="$HOME/.jdks/corretto-21.0.12.1"
-export PATH="$JAVA_HOME/bin:$PATH"
-./mvnw spring-boot:run
-```
 
 ## Configuration
 
